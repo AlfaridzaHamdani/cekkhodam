@@ -1,0 +1,19 @@
+.bg-primary {
+  background-color: #254336;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.bg-secondary {
+  background-color: #6b8a7a;
+}

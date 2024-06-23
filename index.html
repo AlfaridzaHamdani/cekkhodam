@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cek Khodam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-primary">
+    <form
+      method="post"
+      class="flex flex-col justify-center items-center h-[100vh]"
+      id="khodamForm"
+    >
+      <h1 class="text-center text-white font-semibold text-[32px] pb-10">
+        Cek Khodam
+      </h1>
+      <div class="flex flex-col gap-4 w-[500px]">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="py-2 px-4 w-full rounded-lg"
+          required
+        />
+        <button
+          type="submit"
+          class="py-2 w-full bg-secondary text-white rounded-lg"
+        >
+          Cek Khodam
+        </button>
+        <div
+          id="result"
+          class="mt-4 py-2 px-4 w-full bg-primary text-white rounded-lg text-center"
+        ></div>
+      </div>
+    </form>
+  </body>
+
+  <script>
+    const x = [
+      "pisang joget",
+      "mie ayam",
+      "sate padang",
+      "sate ayam",
+      "kecoa tidur",
+      "tuyul cepak",
+      "kompor",
+      "gas melon",
+      "opah breakdance",
+      "tutup botol",
+      "kaos kaki",
+      "teh pucuk",
+      "jeruk mipis",
+      "dora sixpack",
+      "kaca pecah",
+      "somay",
+      "bagas dribble",
+      "sambel geprek",
+      "ember cat",
+      "sendok semen",
+      "palu",
+      "brokoli mulet",
+      "marimas",
+      "anya gundul",
+      "naga api",
+      "cicak kepala 7",
+      "baling baling drone",
+      "tuyul sedekah",
+      "pocong salto",
+      "saklar listrik",
+      "toren lumba-lumba",
+    ];
+
+    function calculateValue(input) {
+      return input
+        .toLowerCase()
+        .split("")
+        .reduce((acc, char) => {
+          const charCode = char.charCodeAt(0);
+          if (charCode >= 97 && charCode <= 122) {
+            return acc + (charCode - 96);
+          }
+          return acc;
+        }, 0);
+    }
+
+    document
+      .getElementById("khodamForm")
+      .addEventListener("submit", function (e) {
+        e.preventDefault();
+        const nameInput = document.getElementById("name").value.trim();
+        if (nameInput !== "") {
+          const value = calculateValue(nameInput);
+          const index = value % x.length; // Ensure the index is within bounds
+          const result = x[index];
+          document.getElementById("result").textContent = result;
+        } else {
+          document.getElementById("result").textContent = "";
+        }
+      });
+  </script>
+</html>
